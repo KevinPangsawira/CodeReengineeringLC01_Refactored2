@@ -44,12 +44,4 @@ public class Movie {
     public void setRating(double rating) {
         this.rating = rating;
     }
-
-    // New method to display movie details
-    public void getDetails() {
-        System.out.println("Title: " + title);
-        System.out.println("Genre: " + genre);
-        System.out.println("Duration: " + duration + " mins");
-        System.out.println("Rating: " + rating);
-    }
 }
