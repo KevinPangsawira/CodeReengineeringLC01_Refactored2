@@ -15,19 +15,18 @@ public class MovieManager {
         System.out.println("Movie added successfully: " + title);
     }
 
-    // Update an existing movie
-    public void updateMovie(int index, String title, String genre, int duration, double rating) {
-        if (index >= 0 && index < movies.size()) {
-            Movie movie = movies.get(index);
-            movie.setTitle(title);
-            movie.setGenre(genre);
-            movie.setDuration(duration);
-            movie.setRating(rating);
-            System.out.println("Movie updated successfully: " + title);
-        } else {
-            System.out.println("Invalid movie index.");
-        }
+    public void updateMovie(int index, MovieInput input) {
+    if (index >= 0 && index < movies.size()) {
+        Movie movie = movies.get(index);
+        movie.setTitle(input.title);
+        movie.setGenre(input.genre);
+        movie.setDuration(input.duration);
+        movie.setRating(input.rating);
+        System.out.println("Movie updated successfully: " + input.title);
+    } else {
+        System.out.println("Invalid movie index.");
     }
+}
 
     // Delete a movie
     public void deleteMovie(int index) {

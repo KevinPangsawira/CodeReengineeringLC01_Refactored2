@@ -63,4 +63,11 @@ public class Booking {
     public boolean isCanceled() {
         return isCanceled;
     }
+
+    public String getBookingSummary() {
+    String status = isCanceled() ? "(Canceled)" : "(Active)";
+    return "Movie: " + showtime.getMovie().getTitle() +
+           ", Showtime: " + showtime.getTime() + " " + status;
+    }
+
 }

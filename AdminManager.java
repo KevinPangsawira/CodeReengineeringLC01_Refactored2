@@ -75,8 +75,12 @@ public class AdminManager {
                     " | Revenue: $" + showtime.getTotalRevenue());
         }
     }
+    
 
-    // Method to manage movies
+   
+ 
+
+
     public void manageMovies(Scanner scanner) {
         while (true) {
             System.out.println("\n--- Manage Movies ---");
@@ -90,58 +94,53 @@ public class AdminManager {
             scanner.nextLine(); // Consume newline
 
             switch (choice) {
-                case 1:
-                    System.out.print("Enter movie title: ");
-                    String title = scanner.nextLine();
-                    System.out.print("Enter genre: ");
-                    String genre = scanner.nextLine();
-                    System.out.print("Enter duration (in mins): ");
-                    int duration = scanner.nextInt();
-                    System.out.print("Enter rating: ");
-                    double rating = scanner.nextDouble();
-                    scanner.nextLine(); // Consume newline
-                    movieManager.addMovie(title, genre, duration, rating);
-                    break;
-
-                case 2:
-                    movieManager.listMovies();
-                    System.out.print("Enter the index of the movie to update: ");
-                    int index = scanner.nextInt();
-                    scanner.nextLine();
-                    System.out.print("Enter new title: ");
-                    title = scanner.nextLine();
-                    System.out.print("Enter new genre: ");
-                    genre = scanner.nextLine();
-                    System.out.print("Enter new duration (in mins): ");
-                    duration = scanner.nextInt();
-                    System.out.print("Enter new rating: ");
-                    rating = scanner.nextDouble();
-                    scanner.nextLine();
-                    movieManager.updateMovie(index, title, genre, duration, rating);
-                    break;
-
-                case 3:
-                    movieManager.listMovies();
-                    System.out.print("Enter the index of the movie to delete: ");
-                    index = scanner.nextInt();
-                    scanner.nextLine();
-                    movieManager.deleteMovie(index);
-                    break;
-
-                case 4:
-                    movieManager.listMovies();
-                    break;
-
-                case 5:
+                case 1 -> handleAddMovie(scanner);
+                case 2 -> handleUpdateMovie(scanner);
+                case 3 -> handleDeleteMovie(scanner);
+                case 4 -> movieManager.listMovies();
+                case 5 -> {
                     return;
-
-                default:
-                    System.out.println("Invalid choice. Please try again.");
+                }
+                default -> System.out.println("Invalid choice. Please try again.");
             }
         }
     }
 
-    // Method to manage showtimes
+    private void handleAddMovie(Scanner scanner) {
+        MovieInput input = readMovieInput(scanner);
+        movieManager.addMovie(input.title, input.genre, input.duration, input.rating);
+    }
+
+    private void handleUpdateMovie(Scanner scanner) {
+        movieManager.listMovies();
+        System.out.print("Enter the index of the movie to update: ");
+        int index = scanner.nextInt();
+        scanner.nextLine();
+        MovieInput input = readMovieInput(scanner);
+        movieManager.updateMovie(index, input);
+    }
+
+    private void handleDeleteMovie(Scanner scanner) {
+        movieManager.listMovies();
+        System.out.print("Enter the index of the movie to delete: ");
+        int index = scanner.nextInt();
+        scanner.nextLine();
+        movieManager.deleteMovie(index);
+    }
+
+    private MovieInput readMovieInput(Scanner scanner) {
+        System.out.print("Enter movie title: ");
+        String title = scanner.nextLine();
+        System.out.print("Enter genre: ");
+        String genre = scanner.nextLine();
+        System.out.print("Enter duration (in mins): ");
+        int duration = scanner.nextInt();
+        System.out.print("Enter rating: ");
+        double rating = scanner.nextDouble();
+        scanner.nextLine(); 
+        return new MovieInput(title, genre, duration, rating);
+    }
+
     public void manageShowtimes(Scanner scanner) {
         while (true) {
             System.out.println("\n--- Manage Showtimes ---");
@@ -152,62 +151,62 @@ public class AdminManager {
             System.out.println("5. Back to Admin Menu");
             System.out.print("Choose an option: ");
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+            scanner.nextLine(); 
 
             switch (choice) {
-                case 1:
-                    movieManager.listMovies();
-                    System.out.print("Enter the index of the movie for the showtime: ");
-                    int movieIndex = scanner.nextInt();
-                    scanner.nextLine();
-                    Movie movie = movieManager.getMovie(movieIndex);
-                    if (movie != null) {
-                        System.out.print("Enter time (e.g., 18:00): ");
-                        String time = scanner.nextLine();
-                        System.out.print("Enter number of seats: ");
-                        int seats = scanner.nextInt();
-                        System.out.print("Enter ticket price: ");
-                        double price = scanner.nextDouble(); // New input for ticket price
-                        scanner.nextLine();
-                        showtimeManager.addShowtime(movie, time, seats, price); // Pass the price to addShowtime
-                    } else {
-                        System.out.println("Invalid movie index.");
-                    }
-                    break;
-
-                case 2:
-                    showtimeManager.listShowtimes();
-                    System.out.print("Enter the index of the showtime to update: ");
-                    int index = scanner.nextInt();
-                    scanner.nextLine();
-                    System.out.print("Enter new time: ");
-                    String time = scanner.nextLine();
-                    System.out.print("Enter new number of seats: ");
-                    int seats = scanner.nextInt();
-                    System.out.print("Enter new ticket price: ");
-                    double price = scanner.nextDouble(); // New input for ticket price
-                    scanner.nextLine();
-                    showtimeManager.updateShowtime(index, time, seats, price); // Pass the price to updateShowtime
-                    break;
-
-                case 3:
-                    showtimeManager.listShowtimes();
-                    System.out.print("Enter the index of the showtime to delete: ");
-                    index = scanner.nextInt();
-                    scanner.nextLine();
-                    showtimeManager.deleteShowtime(index);
-                    break;
-
-                case 4:
-                    showtimeManager.listShowtimes();
-                    break;
-
-                case 5:
+                case 1 -> handleAddShowtime(scanner);
+                case 2 -> handleUpdateShowtime(scanner);
+                case 3 -> handleDeleteShowtime(scanner);
+                case 4 -> showtimeManager.listShowtimes();
+                case 5 -> {
                     return;
-
-                default:
-                    System.out.println("Invalid choice. Please try again.");
+                }
+                default -> System.out.println("Invalid choice. Please try again.");
             }
         }
     }
+
+    private void handleAddShowtime(Scanner scanner) {
+        movieManager.listMovies();
+        System.out.print("Enter the index of the movie for the showtime: ");
+        int movieIndex = scanner.nextInt();
+        scanner.nextLine();
+        Movie movie = movieManager.getMovie(movieIndex);
+
+        if (movie != null) {
+            ShowtimeInput input = readShowtimeInput(scanner);
+            showtimeManager.addShowtime(movie, input.time, input.seats, input.price);
+        } else {
+            System.out.println("Invalid movie index.");
+        }
+    }
+
+    private void handleUpdateShowtime(Scanner scanner) {
+        showtimeManager.listShowtimes();
+        System.out.print("Enter the index of the showtime to update: ");
+        int index = scanner.nextInt();
+        scanner.nextLine();
+        ShowtimeInput input = readShowtimeInput(scanner);
+        showtimeManager.updateShowtime(index, input.time, input.seats, input.price);
+    }
+
+    private void handleDeleteShowtime(Scanner scanner) {
+        showtimeManager.listShowtimes();
+        System.out.print("Enter the index of the showtime to delete: ");
+        int index = scanner.nextInt();
+        scanner.nextLine();
+        showtimeManager.deleteShowtime(index);
+    }
+
+    private ShowtimeInput readShowtimeInput(Scanner scanner) {
+        System.out.print("Enter time (e.g., 18:00): ");
+        String time = scanner.nextLine();
+        System.out.print("Enter number of seats: ");
+        int seats = scanner.nextInt();
+        System.out.print("Enter ticket price: ");
+        double price = scanner.nextDouble();
+        scanner.nextLine(); 
+        return new ShowtimeInput(time, seats, price);
+    }
+
 }

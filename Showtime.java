@@ -80,11 +80,4 @@ public class Showtime {
             seats.add(new Seat(i));
         }
     }
-
-    // New method to display showtime details
-    public void showDetails() {
-        System.out.println("Movie: " + movie.getTitle());
-        System.out.println("Showtime: " + time);
-        System.out.println("Available Seats: " + getAvailableSeats().size());
-    }
 }

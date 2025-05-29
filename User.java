@@ -40,9 +40,7 @@ public class User {
         } else {
             System.out.println(username + "'s Booking History:");
             for (Booking booking : bookingHistory) {
-                String status = booking.isCanceled() ? "(Canceled)" : "(Active)";
-                System.out.println("Movie: " + booking.getShowtime().getMovie().getTitle() +
-                        ", Showtime: " + booking.getShowtime().getTime() + " " + status);
+                System.out.println(booking.getBookingSummary());
             }
         }
     }
