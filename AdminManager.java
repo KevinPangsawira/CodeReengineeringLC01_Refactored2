@@ -210,19 +210,4 @@ public class AdminManager {
             }
         }
     }
-
-
-    // Calculate and display total revenue from all bookings
-    private void displayTotalRevenue() {
-        double totalRevenue = 0.0;
-
-        // Sum up revenue from all showtimes
-        for (Showtime showtime : showtimeManager.getShowtimes()) {
-            totalRevenue += showtime.getTotalRevenue();
-        }
-
-        System.out.println("Total Revenue: $" + totalRevenue);
-    }
-
-    
 }
