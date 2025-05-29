@@ -211,31 +211,6 @@ public class AdminManager {
         }
     }
 
-    // Display analytics to Admins
-    public void displayAnalytics(UserManager userManager) {
-        System.out.println("\n--- Admin Analytics Dashboard ---");
-        displayMostBookedMovies();
-        displayTotalRevenue();
-        displayUserActivity(userManager);
-    }
-
-    // Calculate and display the most booked movies
-    private void displayMostBookedMovies() {
-        Map<Movie, Integer> movieBookingCount = new HashMap<>();
-
-        // Count bookings per movie
-        for (Showtime showtime : showtimeManager.getShowtimes()) {
-            Movie movie = showtime.getMovie();
-            int bookingCount = movieBookingCount.getOrDefault(movie, 0);
-            movieBookingCount.put(movie, bookingCount + showtime.getTotalBookings());
-        }
-
-        // Find the most booked movie
-        System.out.println("Most Booked Movies:");
-        movieBookingCount.entrySet().stream()
-                .sorted((e1, e2) -> e2.getValue().compareTo(e1.getValue())) // Sort by booking count descending
-                .forEach(entry -> System.out.println(entry.getKey().getTitle() + ": " + entry.getValue() + " bookings"));
-    }
 
     // Calculate and display total revenue from all bookings
     private void displayTotalRevenue() {
@@ -249,14 +224,5 @@ public class AdminManager {
         System.out.println("Total Revenue: $" + totalRevenue);
     }
 
-    // Display user activity - number of bookings per user
-    private void displayUserActivity(UserManager userManager) {
-        System.out.println("User Activity:");
-        for (User user : userManager.getUsers()) {
-            if (user.getRole().equalsIgnoreCase("User")) {
-                int bookingCount = user.getBookingHistory().size();
-                System.out.println(user.getUsername() + ": " + bookingCount + " bookings");
-            }
-        }
-    }
+    
 }
