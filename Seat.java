@@ -4,7 +4,7 @@ public class Seat {
 
     public Seat(int seatNumber) {
         this.seatNumber = seatNumber;
-        this.isBooked = false; // Seats start off as available
+        this.isBooked = false; 
     }
 
     public int getSeatNumber() {
@@ -33,7 +33,6 @@ public class Seat {
         }
     }
 
-    // Override toString method for better display
     @Override
     public String toString() {
         return "Seat " + seatNumber + (isBooked ? " (Booked)" : " (Available)");

@@ -18,7 +18,6 @@ public class PaymentHandler {
         Payment payment;
         switch (paymentChoice) {
             case 1:
-                // Collect credit card details from the user
                 System.out.print("Enter Credit Card Number (e.g., 1234-5678-9012-3456): ");
                 String cardNumber = scanner.nextLine();
                 System.out.print("Enter Card Holder Name: ");
@@ -28,7 +27,7 @@ public class PaymentHandler {
                 System.out.print("Enter CVV: ");
                 String cvv = scanner.nextLine();
 
-                // Create a new CreditCardPayment object using the user-provided details
+               
                 payment = new CreditCardPayment(totalAmount, cardNumber, cardHolderName, expiryDate, cvv);
                 break;
             case 2:

@@ -7,7 +7,7 @@ public abstract class Payment {
         this.transactionID = generateTransactionID();
     }
 
-    // Simulate a transaction ID generator
+   
     private String generateTransactionID() {
         return "TXN" + System.currentTimeMillis();
     }
@@ -20,9 +20,8 @@ public abstract class Payment {
         return transactionID;
     }
 
-    // Abstract method for processing payment
+   
     public abstract boolean processPayment();
 
-    // Abstract method to generate a receipt
     public abstract void generateReceipt();
 }

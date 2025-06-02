@@ -5,7 +5,7 @@ public class Showtime {
     private Movie movie;
     private String time;
     private List<Seat> seats;
-    private double price; // New field for ticket price
+    private double price; 
     private double totalRevenue;
 
     public Showtime(Movie movie, String time, int totalSeats, double price) {
@@ -15,13 +15,13 @@ public class Showtime {
         this.seats = new ArrayList<>();
         this.totalRevenue = 0.0;
 
-        // Initialize the seats
+        
         for (int i = 1; i <= totalSeats; i++) {
-            seats.add(new Seat(i)); // Create a seat with seat number i
+            seats.add(new Seat(i)); 
         }
     }
 
-    // Getter and Setter for price
+   
     public double getPrice() {
         return price;
     }
@@ -30,7 +30,7 @@ public class Showtime {
         this.price = price;
     }
 
-    // Calculate total bookings for this showtime
+    
     public int getTotalBookings() {
         int bookedSeats = 0;
         for (Seat seat : seats) {
@@ -41,7 +41,7 @@ public class Showtime {
         return bookedSeats;
     }
 
-    // Track total revenue for analytics
+    
     public void addRevenue(double amount) {
         this.totalRevenue += amount;
     }
@@ -50,7 +50,6 @@ public class Showtime {
         return totalRevenue;
     }
 
-    // Getter methods
     public Movie getMovie() {
         return movie;
     }
@@ -69,7 +68,7 @@ public class Showtime {
         return availableSeats;
     }
 
-    // Setter methods to update showtime details
+    
     public void setTime(String time) {
         this.time = time;
     }

@@ -14,11 +14,11 @@ public class CreditCardPayment extends Payment {
 
     @Override
     public boolean processPayment() {
-        // Mock processing of the credit card
+       
         System.out.println("Processing credit card payment for $" + getAmount() + "...");
         System.out.println("Card Number: " + cardNumber);
         System.out.println("Card Holder: " + cardHolderName);
-        // Simulate a successful payment
+       
         System.out.println("Payment Successful!");
         return true;
     }

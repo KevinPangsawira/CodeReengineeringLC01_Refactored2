@@ -11,7 +11,7 @@ public class Movie {
         this.rating = rating;
     }
 
-    // Getter methods
+   
     public String getTitle() {
         return title;
     }
@@ -28,7 +28,7 @@ public class Movie {
         return rating;
     }
 
-    // Setter methods to update movie details
+    
     public void setTitle(String title) {
         this.title = title;
     }

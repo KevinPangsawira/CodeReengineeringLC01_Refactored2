@@ -9,7 +9,6 @@ public class PayPalPayment extends Payment {
     @Override
     public boolean processPayment() {
         System.out.println("Processing PayPal payment for $" + amount + " via " + email + "...");
-        // Simulate success
         return true;
     }
 

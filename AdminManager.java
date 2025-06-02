@@ -12,7 +12,7 @@ public class AdminManager {
         this.showtimeManager = showtimeManager;
     }
 
-    // Display total revenue with options
+    
     public void displayRevenueReports(Scanner scanner) {
         while (true) {
             System.out.println("\n--- Revenue Reports ---");
@@ -35,14 +35,14 @@ public class AdminManager {
                     showRevenueByShowtime();
                     break;
                 case 4:
-                    return; // Exit the revenue reports menu loop and go back to Admin menu
+                    return; 
                 default:
                     System.out.println("Invalid choice. Please try again.");
             }
         }
     }
 
-    // Calculate and display total revenue
+   
     private void showTotalRevenue() {
         double totalRevenue = 0.0;
         for (Showtime showtime : showtimeManager.getShowtimes()) {
@@ -51,7 +51,7 @@ public class AdminManager {
         System.out.println("Total Revenue: $" + totalRevenue);
     }
 
-    // Calculate revenue by movie
+    
     private void showRevenueByMovie() {
         Map<Movie, Double> movieRevenueMap = new HashMap<>();
 
@@ -67,7 +67,7 @@ public class AdminManager {
         }
     }
 
-    // Calculate revenue by showtime
+   
     private void showRevenueByShowtime() {
         System.out.println("Revenue by Showtime:");
         for (Showtime showtime : showtimeManager.getShowtimes()) {
@@ -91,7 +91,7 @@ public class AdminManager {
             System.out.println("5. Back to Admin Menu");
             System.out.print("Choose an option: ");
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+            scanner.nextLine(); 
 
             switch (choice) {
                 case 1 -> handleAddMovie(scanner);

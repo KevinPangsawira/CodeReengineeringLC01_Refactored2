@@ -8,7 +8,6 @@ public class MovieManager {
         this.movies = new ArrayList<>();
     }
 
-    // Add a new movie
     public void addMovie(String title, String genre, int duration, double rating) {
         Movie newMovie = new Movie(title, genre, duration, rating);
         movies.add(newMovie);
@@ -28,7 +27,6 @@ public class MovieManager {
     }
 }
 
-    // Delete a movie
     public void deleteMovie(int index) {
         if (index >= 0 && index < movies.size()) {
             Movie removedMovie = movies.remove(index);
@@ -52,7 +50,7 @@ public class MovieManager {
         }
     }
 
-    // Search for movies by minimum rating
+   
     public void searchMoviesByRating(double minRating) {
         System.out.println("Movies with rating >= " + minRating);
         boolean found = false;
@@ -67,7 +65,7 @@ public class MovieManager {
         }
     }
 
-    // Search for movies by title keyword
+   
     public void searchMoviesByTitle(String keyword) {
         System.out.println("Movies matching: " + keyword);
         boolean found = false;
@@ -82,7 +80,7 @@ public class MovieManager {
         }
     }
 
-    // List all movies
+    
     public void listMovies() {
         if (movies.isEmpty()) {
             System.out.println("No movies available.");
@@ -95,7 +93,6 @@ public class MovieManager {
         }
     }
 
-    // Get a movie by index
     public Movie getMovie(int index) {
         if (index >= 0 && index < movies.size()) {
             return movies.get(index);

@@ -8,14 +8,14 @@ public class ShowtimeManager {
         this.showtimes = new ArrayList<>();
     }
 
-    // Add a new showtime for a specific movie
+    
     public void addShowtime(Movie movie, String time, int seats, double price) {
         Showtime newShowtime = new Showtime(movie, time, seats, price);
         showtimes.add(newShowtime);
         System.out.println("Showtime added successfully for " + movie.getTitle() + " at " + time + " with price $" + price);
     }
 
-    // Method to update showtime details
+   
     public void updateShowtime(int index, String time, int seats, double price) {
         if (index >= 0 && index < showtimes.size()) {
             Showtime showtime = showtimes.get(index);
@@ -28,12 +28,11 @@ public class ShowtimeManager {
         }
     }
 
-    // Getter method to access all showtimes
     public List<Showtime> getShowtimes() {
         return showtimes;
     }
 
-    // Delete a showtime
+   
     public void deleteShowtime(int index) {
         if (index >= 0 && index < showtimes.size()) {
             Showtime removedShowtime = showtimes.remove(index);
@@ -43,7 +42,7 @@ public class ShowtimeManager {
         }
     }
 
-    // List all showtimes
+   
     public void listShowtimes() {
         if (showtimes.isEmpty()) {
             System.out.println("No showtimes available.");
@@ -56,7 +55,6 @@ public class ShowtimeManager {
         }
     }
 
-    // Get a showtime by index
     public Showtime getShowtime(int index) {
         if (index >= 0 && index < showtimes.size()) {
             return showtimes.get(index);

@@ -4,12 +4,12 @@ import java.util.List;
 public class User {
     private String username;
     private String password;
-    private String role; // New role attribute (e.g., "Admin" or "User")
+    private String role; 
     private List<Booking> bookingHistory;
 
     public User(String username, String password, String role) {
         this.username = username;
-        this.password = HashUtils.hashPassword(password); // Store hashed password
+        this.password = HashUtils.hashPassword(password); 
         this.role = role;
         this.bookingHistory = new ArrayList<>();
     }

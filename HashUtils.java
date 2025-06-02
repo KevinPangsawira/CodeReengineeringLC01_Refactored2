@@ -9,10 +9,10 @@ public class HashUtils {
     */
     public static String hashPassword(String password) {
         try {
-            MessageDigest messageDigest = MessageDigest.getInstance("SHA-256"); // Throws no such algorithim
-            byte[] hash = messageDigest.digest(password.getBytes()); // Generate hash
+            MessageDigest messageDigest = MessageDigest.getInstance("SHA-256"); 
+            byte[] hash = messageDigest.digest(password.getBytes()); 
 
-            // Convert hash to hex
+           
             StringBuilder hexString = new StringBuilder();
             for (byte b : hash) {
                 String hex = Integer.toHexString(0xff & b);
